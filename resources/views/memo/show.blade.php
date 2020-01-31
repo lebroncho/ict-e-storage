@@ -109,6 +109,11 @@
                     <a class="btn btn-info" href="{{ route('memo.edit', $memo->id) }}">
                         Edit
                     </a>
+                    <form action="{{ route('memo.destroy', $memo->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" style="display: inline-block;">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
                 </div>
                 <table class="table table-bordered table-striped">
                     <tbody>

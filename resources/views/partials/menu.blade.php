@@ -76,6 +76,17 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('other.index') }}" class="nav-link">
+                        <p>
+                            <i class="fas fa-file-alt"></i>
+
+                            </i>
+                            <span>Other Files</span>
+                        </p>
+                    </a>
+                </li>
                
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">

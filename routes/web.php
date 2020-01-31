@@ -23,4 +23,4 @@ Route::put('request/{request}', 'RequestController@replaceImage')->name('request
 Route::resource('purchase_order', 'PoController');
 Route::resource('requisition', 'RequisitionController');
 Route::resource('bill', 'BillController');
-
+Route::resource('other', 'OtherController');

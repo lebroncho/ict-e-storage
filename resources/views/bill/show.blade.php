@@ -112,7 +112,7 @@
                     <form action="{{ route('bill.destroy', $bill->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" style="display: inline-block;">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                        <input type="submit" class="btn btn-danger" value="Delete">
                     </form>
                 </div>
                 <table class="table table-bordered table-striped">

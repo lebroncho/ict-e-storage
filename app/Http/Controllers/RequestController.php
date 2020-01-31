@@ -72,33 +72,8 @@ class RequestController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request = Req::find($id);
+        $req = Req::find($id);
 
-        $request->update([
-            'type' => $request->input('type'),
-            'subject' => $request->input('subject'),
-            'from' => $request->input('from'),
-            'to' => $request->input('to'),
-            'noted_by' => $request->input('noted_by'),
-            'cc' => $request->input('cc'),
-            'date_received' => $request->input('date_received')
-        ]);
-
-        return redirect()->route('request.show', $request->id)->with('success' , 'Request edit successfully');
-    }
-
-    public function destroy($id)
-    {
-        $request = Req::find($id);
-        $request->delete();
-
-        return redirect()->route('request.index')->with('success' , 'Request deleted successfully');
-    }
-
-    public function replaceImage(Request $request, $id)
-    {
-        $request = Req::find($id);
-        
         $this->validate($request, [
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
@@ -111,9 +86,35 @@ class RequestController extends Controller
                 $image->move(public_path().'/images/', $name);  
                 $data[] = $name;  
             }
-            $request->update([
+            $req->update([
+                'requested_by' => $request->input('requested_by'),
+                'office' => $request->input('office'),
+                'designation' => $request->input('designation'),
+                'request' => $request->input('request'),
+                'date_requested' => $request->input('date_requested'),
+                'filename' => json_encode($data)
+            ]);    
+        }
+        else
+        {
+            $req->update([
+                'requested_by' => $request->input('requested_by'),
+                'office' => $request->input('office'),
+                'designation' => $request->input('designation'),
+                'request' => $request->input('request'),
+                'date_requested' => $request->input('date_requested'),
                 'filename' => json_encode($data)
             ]);
         }
+
+        return redirect()->route('request.show', $request->id)->with('success' , 'Request edit successfully');
+    }
+
+    public function destroy($id)
+    {
+        $request = Req::find($id);
+        $request->delete();
+
+        return redirect()->route('request.index')->with('success' , 'Request deleted successfully');
     }
 }
