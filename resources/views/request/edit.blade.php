@@ -8,8 +8,11 @@
 
     <div class="card-body">
         <div class="form-group">
+            <a class="btn btn-info" href="{{ route('request.show', $request->id) }}">
+                Back
+            </a>
             <a class="btn btn-default" href="{{ route('request.index') }}">
-            Back to Requests
+                Requests
             </a>
         </div>
         <form autocomplete="off" method="POST" action="{{ route("request.update", [$request->id]) }}" enctype="multipart/form-data">
