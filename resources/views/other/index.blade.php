@@ -25,7 +25,7 @@
             
                                     </th>
 
-                                    <th>Title</th>
+                                    <th>File</th>
                                     <th>Date</th>
                                     <th>
                                         &nbsp;

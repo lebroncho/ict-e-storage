@@ -117,9 +117,9 @@
     function addRow()
     {
         var tr = '<tr>'+
-        '<td><input type="number" name="qty[]" class="form-control quantity"></td>'+
-        '<td><input type="text" name="unit[]" class="form-control quantity"></td>'+
-        '<td><input type="text" name="description[]" class="form-control quantity"></td>'+
+        '<td><input type="number" name="rows[0][qty]" class="form-control quantity"></td>'+
+        '<td><input type="text" name="rows[0][unit]" class="form-control quantity"></td>'+
+        '<td><input type="text" name="rows[0][description]" class="form-control quantity"></td>'+
         '<td><a class="btn btn-danger remove"><i class="fas fa-times"></i></a></td>'+
         '</tr>';
         $('tbody').append(tr);

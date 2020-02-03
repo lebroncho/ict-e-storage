@@ -51,6 +51,7 @@ class RequisitionController extends Controller
                     'description' => $row['description']
                 ];
             }
+
             
             RequisitionItem::insert($items);   
             //$requisition->requisition_items()->saveMany($items);
@@ -74,6 +75,8 @@ class RequisitionController extends Controller
                     'description' => $row['description']
                 ];
             }
+
+            dd($rows);
             
             RequisitionItem::insert($items);   
             //$requisition->requisition_items()->saveMany($items);
