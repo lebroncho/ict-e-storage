@@ -46,13 +46,13 @@
                 <tbody>
                     <tr>
                         <td>
-                            <input type="number" name="rows[0][qty]" class="form-control quantity" required>  
+                            <input type="number" name="qty[]" class="form-control quantity" required>  
                         </td>    
                         <td>
-                            <input type="text" name="rows[0][unit]" class="form-control" required>  
+                            <input type="text" name="unit[]" class="form-control unit" required>  
                         </td>    
                         <td>
-                            <input type="text" name="rows[0][description]" class="form-control" required>  
+                            <input type="text" name="description[]" class="form-control description" required>  
                         </td> 
                         <td>
                              
@@ -116,14 +116,16 @@
 
     function addRow()
     {
+        var i = $('.quantity').length; // get the count of rows.
+
         var tr = '<tr>'+
-        '<td><input type="number" name="rows[0][qty]" class="form-control quantity"></td>'+
-        '<td><input type="text" name="rows[0][unit]" class="form-control quantity"></td>'+
-        '<td><input type="text" name="rows[0][description]" class="form-control quantity"></td>'+
+        '<td><input type="number" name="qty[]" class="form-control quantity"></td>'+
+        '<td><input type="text" name="unit[]" class="form-control unit"></td>'+
+        '<td><input type="text" name="description[]" class="form-control description"></td>'+
         '<td><a class="btn btn-danger remove"><i class="fas fa-times"></i></a></td>'+
         '</tr>';
         $('tbody').append(tr);
-      }
+    }
 
       $('.remove').live('click', function(){
         $(this).parent().parent().remove();

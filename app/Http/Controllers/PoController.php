@@ -45,21 +45,16 @@ class PoController extends Controller
                 'filename' => json_encode($data)
             ]);    
             
-            $rows = $request->input('rows');
-
-            foreach ($rows as $row)
+            for($i = 0; $i < sizeof($request->qty); $i++)
             {
-                $items[] = [
+                PoItem::insert([
                     'po_id' => $po->id,
-                    'qty' => $row['qty'],
-                    'unit' => $row['unit'],
-                    'description' => $row['description'],
-                    'price' => $row['price']
-                ];
-            }
-            
-            RequisitionItem::insert($items);   
-            //$requisition->requisition_items()->saveMany($items);          
+                    'qty' => $request->qty[$i],
+                    'unit' => $request->unit[$i],
+                    'description' => $request->description[$i],
+                    'price' => $request->price[$i]
+                ]);
+            }   
         }
         else
         {
@@ -72,24 +67,18 @@ class PoController extends Controller
                 'supplier' => $request->input('supplier'),
                 'received_by' => $request->input('received_by'),
                 'endorsed_to' => $request->input('endorsed_to')
-            ]);  
+            ]); 
             
-            $rows = $request->input('rows');
-
-            foreach ($rows as $row)
+            for($i = 0; $i < sizeof($request->qty); $i++)
             {
-                $items[] = [
+                PoItem::insert([
                     'po_id' => $po->id,
-                    'qty' => $row['qty'],
-                    'unit' => $row['unit'],
-                    'description' => $row['description'],
-                    'price' => $row['price'],
-                    'amount' => $row['qty']*$row['price']
-                ];
+                    'qty' => $request->qty[$i],
+                    'unit' => $request->unit[$i],
+                    'description' => $request->description[$i],
+                    'price' => $request->price[$i]
+                ]);
             }
-            
-            PoItem::insert($items);   
-            //$requisition->requisition_items()->saveMany($items);
         }
 
 

@@ -40,21 +40,16 @@ class RequisitionController extends Controller
                 'filename' => json_encode($data)
             ]); 
             
-            $rows = $request->input('rows');
-
-            foreach ($rows as $row)
+            for($i = 0; $i < sizeof($request->qty); $i++)
             {
-                $items[] = [
+                RequisitionItem::insert([
                     'requisition_id' => $requisition->id,
-                    'qty' => $row['qty'],
-                    'unit' => $row['unit'],
-                    'description' => $row['description']
-                ];
+                    'qty' => $request->qty[$i],
+                    'unit' => $request->unit[$i],
+                    'description' => $request->description[$i]
+                ]);
             }
-
             
-            RequisitionItem::insert($items);   
-            //$requisition->requisition_items()->saveMany($items);
         }
         else
         {
@@ -62,24 +57,17 @@ class RequisitionController extends Controller
                 'purpose' => $request->input('purpose'),
                 'requisition_date' => $request->input('requisition_date'),
                 'requested_by' => $request->input('requested_by')
-            ]);  
-            
-            $rows = $request->input('rows');
+            ]); 
 
-            foreach ($rows as $row)
+            for($i = 0; $i < sizeof($request->qty); $i++)
             {
-                $items[] = [
+                RequisitionItem::insert([
                     'requisition_id' => $requisition->id,
-                    'qty' => $row['qty'],
-                    'unit' => $row['unit'],
-                    'description' => $row['description']
-                ];
+                    'qty' => $request->qty[$i],
+                    'unit' => $request->unit[$i],
+                    'description' => $request->description[$i]
+                ]);
             }
-
-            dd($rows);
-            
-            RequisitionItem::insert($items);   
-            //$requisition->requisition_items()->saveMany($items);
         }
 
 
