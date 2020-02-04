@@ -24,3 +24,4 @@ Route::resource('purchase_order', 'PoController');
 Route::resource('requisition', 'RequisitionController');
 Route::resource('bill', 'BillController');
 Route::resource('other', 'OtherController');
+Route::resource('requisition_item', 'RequisitionItemController');

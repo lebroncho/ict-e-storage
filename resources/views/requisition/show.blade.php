@@ -130,10 +130,10 @@
                         </tr>
                         <tr>
                             <th>
-                                Date requisitioned
+                                Requisition Date
                             </th>
                             <td>
-                                {{ $requisition->date_requisitioned }}
+                                {{ date('M. d, Y', strtotime($requisition->requisition_date)) }}
                             </td>
                         </tr>
                         <tr>
@@ -161,7 +161,10 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        Items
+                       <strong>Items</strong>
+                       <a class="btn btn-xs btn-info" href="{{ route('requisition_item.edit', $requisition->id) }}">
+                        Edit Items
+                       </a>
                     </div>
     
                     <div class="card-body">

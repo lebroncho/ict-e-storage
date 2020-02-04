@@ -52,7 +52,8 @@ class PoController extends Controller
                     'qty' => $request->qty[$i],
                     'unit' => $request->unit[$i],
                     'description' => $request->description[$i],
-                    'price' => $request->price[$i]
+                    'price' => $request->price[$i],
+                    'amount' => $request->price[$i]*$request->qty[$i]
                 ]);
             }   
         }
@@ -76,7 +77,8 @@ class PoController extends Controller
                     'qty' => $request->qty[$i],
                     'unit' => $request->unit[$i],
                     'description' => $request->description[$i],
-                    'price' => $request->price[$i]
+                    'price' => $request->price[$i],
+                    'amount' => $request->price[$i]*$request->qty[$i]
                 ]);
             }
         }
@@ -103,15 +105,42 @@ class PoController extends Controller
     {
         $po = Po::find($id);
 
-        $po->update([
-            'po_num' => $request->input('po_num'),
-            'issuance_num' => $request->input('issuance_num'),
-            'po_date' => $request->input('po_date'),
-            'released_by' => $request->input('released_by'),
-            'supplier' => $request->input('supplier'),
-            'received_by' => $request->input('received_by'),
-            'endorsed_to' => $request->input('endorsed_to')
+        $this->validate($request, [
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        
+        if($request->hasfile('filename'))
+        {
+            foreach($request->file('filename') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/images/', $name);  
+                $data[] = $name;  
+            } 
+            
+            $po->update([
+                'po_num' => $request->input('po_num'),
+                'issuance_num' => $request->input('issuance_num'),
+                'po_date' => $request->input('po_date'),
+                'released_by' => $request->input('released_by'),
+                'supplier' => $request->input('supplier'),
+                'received_by' => $request->input('received_by'),
+                'endorsed_to' => $request->input('endorsed_to'),
+                'filename' => json_encode($data)
+            ]);
+        }
+        else
+        {
+            $po->update([
+                'po_num' => $request->input('po_num'),
+                'issuance_num' => $request->input('issuance_num'),
+                'po_date' => $request->input('po_date'),
+                'released_by' => $request->input('released_by'),
+                'supplier' => $request->input('supplier'),
+                'received_by' => $request->input('received_by'),
+                'endorsed_to' => $request->input('endorsed_to')
+            ]);
+        }
 
         return redirect()->route('purchase_order.show', $po->id)->with('success' , 'Purchase order files edit successfully');
     }

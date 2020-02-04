@@ -94,11 +94,35 @@ class RequisitionController extends Controller
     {
         $requisition = Requisition::find($id);
 
-        $requisition->update([
-            'purpose' => $request->input('purpose'),
-            'requisition_date' => $request->input('requisition_date'),
-            'requested_by' => $request->input('requested_by')
+        $this->validate($request, [
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        
+        if($request->hasfile('filename'))
+        {
+            foreach($request->file('filename') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/images/', $name);  
+                $data[] = $name;  
+            }
+
+            $requisition->update([
+                'purpose' => $request->input('purpose'),
+                'requisition_date' => $request->input('requisition_date'),
+                'requested_by' => $request->input('requested_by'),
+                'filename' => json_encode($data)
+            ]);
+            
+        }
+        else
+        {
+            $requisition->update([
+                'purpose' => $request->input('purpose'),
+                'requisition_date' => $request->input('requisition_date'),
+                'requested_by' => $request->input('requested_by')
+            ]);
+        }
 
         return redirect()->route('requisition.show', $requisition->id)->with('success' , 'Requisition edit successfully');
     }

@@ -40,7 +40,7 @@
             
                                         </td>
                                         <td>{{ $requisition->purpose }}</td>
-                                        <td>{{ $requisition->requisition_date }}</td>
+                                        <td>{{ date('M. d, Y', strtotime($requisition->requisition_date)) }}</td>
                                         <td>{{ $requisition->requested_by }}</td>
                                         <td>
                                             <a class="btn btn-xs btn-primary" href="{{ route('requisition.show', $requisition->id) }}">

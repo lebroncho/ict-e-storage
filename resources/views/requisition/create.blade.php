@@ -124,6 +124,7 @@
         '<td><input type="text" name="description[]" class="form-control description"></td>'+
         '<td><a class="btn btn-danger remove"><i class="fas fa-times"></i></a></td>'+
         '</tr>';
+        
         $('tbody').append(tr);
     }
 
