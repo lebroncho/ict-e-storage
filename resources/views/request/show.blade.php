@@ -154,7 +154,7 @@
                                 Date Requested
                             </th>
                             <td>
-                                {{ $request->date_requested }}
+                                {{ date('F d, Y', strtotime($request->date_requested)) }}
                             </td>
                         </tr>
                         <tr>

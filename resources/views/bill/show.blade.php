@@ -130,7 +130,7 @@
                                 Date Received
                             </th>
                             <td>
-                                {{ date('M. d, Y', strtotime($bill->received_date)) }}
+                                {{ date('F d, Y', strtotime($bill->received_date)) }}
                             </td>
                         </tr>
                         <tr>
@@ -154,7 +154,7 @@
                                 Statement Date
                             </th>
                             <td>
-                                {{ date('M. d, Y', strtotime($bill->statement_date)) }}
+                                {{ date('F d, Y', strtotime($bill->statement_date)) }}
                             </td>
                         </tr>
                         <tr>

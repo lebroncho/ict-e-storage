@@ -41,7 +41,7 @@
                                         </td>
                                         <td>{{ $memo->type }}</td>
                                         <td>{{ $memo->subject }}</td>
-                                        <td>{{ $memo->date_received }}</td>
+                                        <td>{{ date('M. d, Y', strtotime($memo->date_received)) }}</td>
                                         <td>
                                             <a class="btn btn-xs btn-primary" href="{{ route('memo.show', $memo->id) }}">
                                                 View

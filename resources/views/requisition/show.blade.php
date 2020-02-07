@@ -117,7 +117,7 @@
                                 Purpose
                             </th>
                             <td>
-                                {{ $requisition->requisition }}
+                                {{ $requisition->purpose }}
                             </td>
                         </tr>
                         <tr>
@@ -133,7 +133,7 @@
                                 Requisition Date
                             </th>
                             <td>
-                                {{ date('M. d, Y', strtotime($requisition->requisition_date)) }}
+                                {{ date('F d, Y', strtotime($requisition->requisition_date)) }}
                             </td>
                         </tr>
                         <tr>
@@ -162,9 +162,6 @@
                 <div class="card">
                     <div class="card-header">
                        <strong>Items</strong>
-                       <a class="btn btn-xs btn-info" href="{{ route('requisition_item.edit', $requisition->id) }}">
-                        Edit Items
-                       </a>
                     </div>
     
                     <div class="card-body">

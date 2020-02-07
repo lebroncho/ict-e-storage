@@ -162,7 +162,7 @@
                                 Date Received
                             </th>
                             <td>
-                                {{ $memo->date_received }}
+                                {{ date('F d, Y', strtotime($memo->date_received)) }}
                             </td>
                         </tr>
                         <tr>

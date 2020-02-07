@@ -97,8 +97,9 @@ class PoController extends Controller
     public function edit($id)
     {
         $po = Po::find($id);
+        $items = PoItem::where('po_id', $id)->get();
 
-        return view('po.edit', ['po'=>$po]);
+        return view('po.edit', ['po'=>$po, 'items'=>$items]);
     }
 
     public function update(Request $request, $id)

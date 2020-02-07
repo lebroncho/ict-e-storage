@@ -130,7 +130,7 @@
                                 Date
                             </th>
                             <td>
-                                {{ $other->created_at }}
+                                {{ date('F d, Y', strtotime($other->created_at)) }}
                             </td>
                         </tr>
                         <tr>

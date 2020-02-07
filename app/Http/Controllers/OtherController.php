@@ -41,7 +41,7 @@ class OtherController extends Controller
         }
         else
         {
-            $request = Other::create([
+            $other = Other::create([
                 'title' => $request->input('title'),
                 'created_at' => $request->input('created_at')
             ]);

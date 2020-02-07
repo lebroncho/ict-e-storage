@@ -141,7 +141,7 @@
                                 Purchase Order Date
                             </th>
                             <td>
-                                {{ $po->po_date }}
+                                {{ date('F d, Y', strtotime($po->po_date)) }}
                             </td>
                         </tr>
                         <tr>

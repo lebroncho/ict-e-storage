@@ -39,7 +39,7 @@
             
                                         </td>
                                         <td>{{ $other->title }}</td>
-                                        <td>{{ $other->created_at }}</td>
+                                        <td>{{ date('M. d, Y', strtotime($other->created_at)) }}</td>
                                         <td>
                                             <a class="btn btn-xs btn-primary" href="{{ route('other.show', $other->id) }}">
                                                 View

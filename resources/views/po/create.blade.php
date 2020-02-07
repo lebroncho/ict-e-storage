@@ -145,9 +145,9 @@
 
     });
 
-    $('.addRow').on('click', function(){
+    $(document).on('click', '.addRow' ,function(){
           addRow();
-    }); 
+    });
 
     function addRow()
     {
@@ -164,9 +164,9 @@
         $('tbody').append(tr);
       }
 
-      $('.remove').live('click', function(){
+    $(document).on('click', '.remove' ,function(){
         $(this).parent().parent().remove();
-      });
+    });
 
 </script>
 

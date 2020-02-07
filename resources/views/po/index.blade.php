@@ -41,7 +41,7 @@
                                         </td>
                                         <td>{{ $purchase_order->po_num }}</td>
                                         <td>{{ $purchase_order->po }}</td>
-                                        <td>{{ $purchase_order->po_date }}</td>
+                                        <td>{{ date('M. d, Y', strtotime($purchase_order->po_date)) }}</td>
                                         <td>
                                             <a class="btn btn-xs btn-primary" href="{{ route('purchase_order.show', $purchase_order->id) }}">
                                                 View
