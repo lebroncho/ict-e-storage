@@ -16,6 +16,12 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
+    
+    <style>
+        body {
+            background-color: gainsboro;
+        }
+    </style>
     @yield('styles')
 </head>
 
@@ -43,13 +49,13 @@
                 <div class="login-box">
                     <div class="login-logo">
                         <div class="login-logo">
-                            PWC Logo
+                            <img src="images/pwc-logo-2019.jpg" alt="PWC logo">
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body login-card-body">
                             <p class="login-box-msg">
-                                Login
+                                ICT Electronic Documents
                             </p>
                 
                             {{--@if(session()->has('message'))
