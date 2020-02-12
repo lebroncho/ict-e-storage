@@ -87,9 +87,33 @@
                         </p>
                     </a>
                 </li>
+
+                @if(Auth::user()->role === 'Admin')
+                <li class="nav-item">
+                    <a href="{{ route('user.index') }}" class="nav-link">
+                        <p>
+                            <i class="fas fa-user"></i>
+
+                            </i>
+                            <span>User Management</span>
+                        </p>
+                    </a>
+                </li>
+                @endif
+
+                <li class="nav-item">
+                    <a href="{{ route('user.edit', Auth::user()->id) }}" class="nav-link">
+                        <p>
+                            <i class="fas fa-cog"></i>
+
+                            </i>
+                            <span>Account Setting</span>
+                        </p>
+                    </a>
+                </li>
                
                 <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                    <a href="{{ route('logout') }}" class="nav-link">
                         <p>
                             <i class="fas fa-fw fa-sign-out-alt">
 
